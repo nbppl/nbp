@@ -1,0 +1,48 @@
+// Base font
+$base-font-scale: 1;  // The font scale multiplier (e.g. 2 = 32px/2em/2rem)
+$base-font-pixel: 16; // Used for font size calculations & conversions
+$base-font-colour: #000;
+$base-font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+$base-font-line-height: 2;
+// Base background
+$base-bg-colour: #FFF;
+
+// Selection highlighting
+$content-selection-highlight: #b3d4fc;
+
+// Media
+$break-small: 600px;
+$break-large: 1024px;
+
+// Colors
+$main-green: #005857;
+$main-table-green: #00695f;
+$main-red:#C63452;
+$main-gray: #e6e8eb;
+$main-input-gray: #666;
+$main-light-gray: #EEE;
+$main-light-green:#d7ebe8;
+$main-dark-gray: #444;
+$main-white: #FFFFFF;
+$main-black: #333333;
+$main-yellow: #ffcc00;
+$main-link: #007DBC; //Default
+//$main-link: #00882c; //AWF
+$main-link-darker: #0078B5;
+$main-link-breadcrumb: #296fa3; //Default
+// $main-link-breadcrumb: #007A28; //AWF
+
+$main-link-table: #0170A8;
+$main-link-hover: #C4151C;
+$light-gray: #FEFEFE;
+$light-red: #D65B60;
+
+// Dimensions
+$tablet:1024;
+$phone:768;
+
+
+// files
+$pdf: #e6131c;
+$doc: #135ab2;
+$xls: #4b8c0a;

@@ -1,0 +1,149 @@
+/* Tables */
+table {
+    border-collapse: collapse;
+    margin: 0;
+}
+
+caption {
+    @include sq-font-size(.8);
+    font-style: italic;
+}
+
+th {
+    font-size: 11px;
+}
+
+td {
+    font-size: 11px;
+}
+
+/* Buttons */
+.button {
+    @include sq-transition(background-color .3s ease);
+    background-color: $base-font-colour;
+    color: invert($base-font-colour);
+    display: inline-block;
+    border: 0;
+    padding: .5em 1em;
+    &,
+    &:visited {
+        text-decoration: none;
+    }
+
+    &:focus,
+    &:hover {
+        background-color: darken($base-font-colour, 20%);
+    }
+}
+
+.button--large {
+    @include sq-font-size(1.5);
+}
+
+.button--small {
+    @include sq-font-size(.8);
+}
+
+/* Quotes */
+blockquote {
+    position: relative;
+    padding-left: 3em;
+    margin: 2em 0;
+    &:before {
+        @include sq-font-size(5);
+        color: $base-font-colour;
+        content: "\201C";
+        position: absolute;
+        top: 0;
+        left: 0;
+        line-height: 1em;
+    }
+}
+
+.pull-quote {
+    border-top: 1px solid $base-font-colour;
+    padding: 1em .5em 0 .5em;
+    margin: 1em;
+}
+
+/* Highlight */
+.highlight {
+    background: #cccccc;
+    @extend %inline-block;
+    padding: .1em .5em;
+}
+
+section.form {
+    overflow: visible;
+}
+
+/* Google search plugin reset styles*/
+.content {
+    table {
+        &.gsc-search-box {
+            margin: 0;
+
+            tr {
+                background-color: transparent;
+
+                &:nth-child(odd), &:nth-child(even) {
+                    background-color: transparent;
+                }
+            }
+
+            td {
+                border: none;
+                padding: initial;
+
+                &.gsib_a {
+                    padding-right: 8px;
+                    padding-left: 8px;
+                    padding-top: 4px;
+                }
+
+                .gsc-input {
+                    box-shadow: none;
+                }
+
+                table {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    .gsc-results-wrapper-visible {
+        table {
+            margin: initial;
+
+            tr {
+                background-color: transparent;
+
+                &:nth-child(odd), &:nth-child(even) {
+                    background-color: transparent;
+                }
+
+                td {
+                    border: none;
+                    background-color: transparent;
+                    color: initial;
+                    padding: initial;
+                }
+            }
+        }
+
+        a.gs-title {
+            margin: 0;
+            line-height: initial;
+            padding-left: initial;
+
+            &:before {
+                display: none;
+            }
+        }
+
+        .gsc-thumbnail-inside, .gsc-url-top {
+            padding-left: 0;
+        }
+    }
+}

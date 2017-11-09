@@ -1,0 +1,316 @@
+/**
+ * version: {{version}}
+ * file:    {{file}}
+ * author:  Squiz Australia
+ * updated: {{date}}
+ *
+ * Table of Contents
+ *
+ * - Reset
+ * - Utilities
+ * - General
+ * - Content
+ * - Modules
+    {{toc}}
+ */
+
+// These imports have no CSS output, but provide variables, mixins and helpers to aid in construction of
+// a design cutup.
+@import "boilerplate.scss";
+
+/*
+--------------------
+Reset (normalize.css)
+--------------------
+*/
+
+@import "normalize.scss";
+@import "variables.scss";
+@import "functions.scss";
+@import "mixins.scss";
+
+// This import disabled by default due to rendering issues, particularly with IE where some text doesn't render at all
+//@import "normalize-opentype.scss";
+
+// Box size all the things
+// https://squizmap.squiz.net/imp-bp/6400
+// http://css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice/
+// == Start box-sizing reset ==
+ *, *:before, *:after {
+     -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+             box-sizing: content-box;
+
+// -webkit-box-sizing: inherit;
+//        -moz-box-sizing: inherit;
+//             box-sizing: inherit;
+}
+html {
+    @include sq-border-box;
+}
+// == End box-sizing reset ==
+
+/*
+--------------------
+Utilities
+--------------------
+*/
+
+@import "utilities.scss";
+
+/*
+--------------------
+General
+--------------------
+*/
+
+// Taken from HTML 5 BP
+::-moz-selection {
+    background: $content-selection-highlight;
+    text-shadow: none;
+}
+
+::selection {
+    background: $content-selection-highlight;
+    text-shadow: none;
+}
+
+body,div,h1,h2,h3,h4,h5,h6,p,ul,ol,li,dl,dt,dd,img,form,fieldset,input,textarea,blockquote {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+}
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+   // line-height: $base-font-line-height + em;
+    font-family: $base-font-family;
+    background: $base-bg-colour;
+    color: $base-font-colour;
+    min-width: 980px;
+    background: #e6e8eb;
+
+    @include rwd-to($tablet) {
+        padding: 15px;
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+// Reset fonts for relevant elements (taken from bootstrap)
+input,
+button,
+select,
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+// IE10 Metro responsive
+// Required for Windows 8 Metro split-screen snapping with IE10
+// Source: http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
+@-ms-viewport{
+    width: device-width;
+}
+
+// Print style that shouldn't belong to print.scss to avoid the css beautifier from killing
+// the @ syntax inside media queries
+@page {
+    margin: 0.5cm;
+}
+
+
+
+a {
+    text-decoration: none;
+    color: $main-green;
+}
+
+a:hover {
+    @include rwd-from(1025){
+        color: $main-green;
+        text-decoration: underline;
+    }
+}
+a.imgbox{
+    .content & {
+        padding-left: 0;
+        &:before{
+            background: transparent;
+        }
+    }
+}
+
+.hide {
+    display: none;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.clear {
+    @extend .clearfix;
+}
+.right{
+    text-align: right;
+    .more{
+        padding-right: pxToEm(10);
+        font-size: pxToEm(17);
+        font-weight: normal;
+    }
+}
+.content-section{
+    margin-top:30px;
+}
+.transition {
+    @include sq-transition(all 0.2s ease-in 0s);
+}
+
+.bg-color-red {
+    background: $main-green;
+    color: $main-white;
+}
+
+.bg-color-white {
+    background: $main-white;
+    color: $main-green;
+}
+
+.show_desktop {
+    display: block;
+}
+
+table.show_desktop {
+    display: table;
+}
+
+.hide_desktop {
+    display: none;
+}
+
+.show_mobile {
+    // @include rwd-to(600) {
+    //     display: block;
+    // }
+}
+
+table.hide_mobile {
+    // @include rwd-to(600) {
+    //     display: none;
+    // }
+}
+.text-center {
+    text-align: center;
+}
+.text-left {
+    text-align: left;
+}
+.text-right {
+    text-align: right;
+}
+
+.align-right {
+    float: right;
+    margin: 0 0 10px 20px;
+}
+.fixed-width{
+    margin:0 auto;
+    width: 980px;
+    // @include rwd-to(1020){
+    //     width:100%;
+    // }
+}
+.header{
+    .maintenance &{
+        margin-top: 25px;
+    }
+    // @include rwd-to(1020) {
+    //     margin: 0 1em;
+    //     box-sizing:border-box;
+    //     width: auto;
+    // }
+    // @include rwd-to(600){
+    //     margin-bottom: 10px;
+    // }
+}
+.content-wrapper {
+    .home & ,.maintenance &{
+        margin-top: 25px;
+    }
+    margin: 0 auto;
+    padding: 0;
+    background: #fff;
+    font-size: 0.8em;
+    // @include rwd-to(1020) {
+    //     padding: 0 0 1em 0;
+    //     margin: 0 1.3em 0 1.3em;
+    // }
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+    /* main */
+    .main {
+        .no-right-column & {
+            width: 770px;
+        }
+        .no-left-column & {
+            width: 781px;
+        }
+        .no-left-column.no-right-column & {
+            width: 950px;
+        }
+        width:600px;
+        float: left;
+        position: relative;
+        //padding:0 pxToEm(20);
+        margin: 10px 15px 20px 15px;
+        box-sizing:border-box;
+        // @include rwd-to(1024) {
+        //     float: none;
+        //     display: block;
+        //     width: 100%;
+        //     padding: 0 5%;
+        //     margin: 0 0 1em;
+        //     overflow: hidden;
+        // }
+    }
+    .aside{
+        .no-right-column & {
+            display: none;
+        }
+        width: 149px;
+        margin: 11px 10px 10px 10px;
+        float: right;
+    }
+}
+/*
+--------------------
+Content
+--------------------
+*/
+
+// You can wrap the content styles in a class by un-commenting the following lines
+// to nest the content.scss styles inside .content
+//.content {
+    @import "content.scss";
+//}
+
+
+/*
+--------------------
+Modules
+--------------------
+*/
